@@ -30,7 +30,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -42,7 +42,7 @@
 
       <!-- Nav Item - Inicio -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Inicio</span></a>
       </li>
@@ -285,14 +285,7 @@
                       </font></label>
                       <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" placeholder="" value="" required>
                         </div>
-
-                        <div class="col-md-6 mb-3">
-                      <label for="id_medico"><font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Medico </font>
-                      </font></label>
-                      <input type="text" class="form-control" id="id_medico" name="id_medico" placeholder="" value="" required>
-                        </div>
-                  
+                                   
                         <h5 class="m-0 font-weight-bold text-primary">
                                       
                         <div class="col-md-6 mb-3">

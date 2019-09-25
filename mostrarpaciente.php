@@ -39,13 +39,12 @@
 	$alergias  = isset ($_POST['alergias']) ? trim ($_POST['alergias']) : "";
 	$medicamentos  = isset ($_POST['medicamentos']) ? trim ($_POST['medicamentos']) : "";
 	$fechaRegistro  = isset ($_POST['fechaRegistro']) ? trim ($_POST['fechaRegistro']) : "";
-	$id_medico  = isset ($_POST['id_medico']) ? trim ($_POST['id_medico']) : "";
 	
  //Verificando que se hayan ingresado datos
  //en todos los controles del formulario
  if(empty ($nombres) || empty ($apellidos) ||  empty ($fecha_nacimiento) || empty ($genero)  || empty ($direccion) ||   empty ($correo) 
 ||   empty ($telefono) || empty ($dui) ||  empty ($nit) || empty ($responsableNombre) || empty ($responsablecontacto) || empty ($alergias) || 
- empty ($medicamentos) ||empty ($fechaRegistro) ||empty ($id_medico)){
+ empty ($medicamentos)  || empty ($fechaRegistro)){
  $msg = "Existen campos en el formulario sin llenar. ";
  $msg .= "Regrese al formulario y llene todos los campos. <br>\n";
  $msg .= "[<a href=\"Cregistrarpaciente.php?nombres=" . $nombres . "\">Volver</a>]\n";
@@ -66,9 +65,7 @@
  $responsablecontacto= addslashes($responsablecontacto);
  $alergias = addslashes($alergias);
  $medicamentos = addslashes($medicamentos);
- $fechaRegistro = addslashes($fechaRegistro);
- $id_medico = addslashes($id_medico);
- 
+ $fechaRegistro = date($fechaRegistro);
  }
  //Creando la consulta de actualización con los datos
  //enviados del formulario de modificación de libros
@@ -112,8 +109,7 @@
  \t\t\t<th>TELEFONO PERSONARESPONSABLE</th>\n
   \t\t\t<th>ALERGIAS</th>\n
  \t\t\t<th>MEDICAMENTOS</th>\n
- \t\t\t<th>NOMBRE DOCTOR</th>\n
- \t\t</tr>\n
+  \t\t</tr>\n
  \t</thead>\n
  \t<tbody>\n";
  while($row = $resultc->fetch_assoc()){
@@ -146,9 +142,6 @@ onmouseout=\"this.className='normal'\">\n";
  echo "\t\t\t</td>\n\t\t\t<td> \n";
  echo "\t\t\t\t" . $row['medicamentos'];
  echo "\t\t\t</td>\n\t\t\t<td> \n";
- echo "\t\t\t\t" . $row['id_medico'];
-
- 
  }
  echo "\t</tbody>\n";
  echo "\t\t\t<th colspan=\"5\">\n";

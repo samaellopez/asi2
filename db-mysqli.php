@@ -5,7 +5,7 @@ $db = NULL;
 define("DBHOST", "localhost");
 define("DBUSER", "root");
 define("DBPASS", "");
-define("DBDATA", "clinica-fixed");
+define("DBDATA","clinica-fixed");
 //Creando el objeto de conexión a la base de datos con MySQLi
 
 $db = new mysqli(DBHOST, DBUSER, DBPASS, DBDATA);
@@ -19,17 +19,18 @@ if($db->connect_errno){
 $db->set_charset("utf8");
 
 
-function usuario_get($id, $medico){
+function usuario_get($id, $medicos){
     if(!$id) return 'Usuario no válido';
 
     $db = new mysqli(DBHOST, DBUSER, DBPASS, DBDATA);
-    $query = $medico? 'SELECT CONCAT_WS(" ", "Dr.", nombre, apellidos) as nombre FROM medico WHERE id_medico='.$id.' LIMIT 1':'SELECT CONCAT_WS(" ", "Sria.", username) as nombre FROM login WHERE id_usuario='.$id.' LIMIT 1';        
+    $query = $medicos? 'SELECT CONCAT_WS(" ", "Dr.", nombre, apellidos) as nombre FROM medicos 
+    WHERE id_medicos='.$id.' LIMIT 1':'SELECT CONCAT_WS(" ", "Sria.", username) as nombre FROM login WHERE id_usuario='.$id.' LIMIT 1';        
     $result = $db->query($query);
     return ($usuario = $result->fetch_assoc())? $usuario['nombre'] : 'Usuario no válido';
 }
 
-function cita_list_get($medico, $id){
-    $where = $medico? 'WHERE id_medico='.$id.' AND fecha >= CURDATE()':'WHERE fecha = CURDATE()';
+function cita_list_get($medicos, $id){
+    $where = $medicos? 'WHERE id_medicos='.$id.' AND fecha >= CURDATE()':'WHERE fecha = CURDATE()';
     $db = new mysqli(DBHOST, DBUSER, DBPASS, DBDATA);
     $query = 'SELECT c.*, p.* FROM cita c LEFT JOIN paciente p USING(id_paciente) '.$where.' ORDER BY fecha ASC, hora ASC';
     $result = $db->query($query);
