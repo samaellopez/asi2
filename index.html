@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Clinica Medica</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="vendor/fontawesome-free/css/all.css" />
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+
+<body>
+  <div id="bg"></div>
+  <header>
+    <a href="#">Clínica Médica "Lorem ipsum"</a>
+  </header>
+  <main>
+    <section id="primary">
+      <h1>Sistema para Clínica Médica</h1>
+      <p>
+        Web application for the management of a small clinic. <br />
+        Built using PHP, MySQL & 💜
+      </p>
+      <a href="register.php">Registrar nuevo usuario</a>
+    </section>
+    <section id="card">
+      <div class="alert alert-info" role="alert">
+        <!-- Feedback al usuario desde el servidor -->
+      </div>
+      <form>
+        <label class="control-label" for="email">
+          Usuario
+        </label>
+        <div class="input-group">
+          <input class="form-control" id="user" name="user" type="text" />
+        </div>
+        <label class="control-label" for="password">
+          Contraseña
+        </label>
+        <div class="input-group">
+          <input class="form-control" id="password" name="password" type="password" />
+        </div>
+        <input type="submit" name="login" id="login" value="Iniciar Sesión" class="main-button">
+      </form>
+    </section>
+  </main>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+    // Creamos evento sobre boton 'Iniciar Sesion'
+    $(document).ready(function () {
+      $('.alert').hide();
+      $('#login').click(function () {
+        event.preventDefault();
+
+        // Obtenemos los valores de los textbox
+        let user = $('#user').val();
+        let password = $('#password').val();
+
+        // Enviamos con ajax
+        $.ajax({
+          method: 'post',
+          url: 'login.php',
+          data: {
+            user: user,
+            password: password
+          },
+          success: function (data) {
+            // TODO: feedback al usuario
+            console.log(data);
+            if (data.trim() == 'Autorizado') {
+              location.href = 'main.php';
+            } else 
+              $('.alert').html('Usuario / Contraseña incorrectos').show();
+          }
+        })
+      });
+    })
+  </script>
+</body>
+
+</html>

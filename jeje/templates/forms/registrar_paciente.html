@@ -1,0 +1,160 @@
+<div class="container-fluid">
+  <div class="card shadow mb-8">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Registrar Paciente</h6>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="Cregistrarpaciente.php">
+        <div class="col-md-6 mb-3">
+          <label for="nombres">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Nombres</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="nombres" name="nombres" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="apellidos">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Apellidos</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="fecha_nacimiento">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Fecha Nacimiento</font>
+            </font>
+          </label>
+          <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="" value=""
+            required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="genero">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Genero</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="genero" name="genero" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="direccion">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Direccion</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="direccion" name="direccion" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="correo">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Correo </font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="correo" name="correo" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="telefono">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Numero de telefono</font>
+            </font>
+          </label>
+          <input type="is_numeric" class="form-control" id="telefono" name="telefono" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="dui">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">DUI</font>
+            </font>
+          </label>
+          <input type="is_numeric" class="form-control" id="dui" name="dui" placeholder="" value="" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="nit">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">NIT</font>
+            </font>
+          </label>
+          <input type="is_numeric" class="form-control" id="nit" name="nit" placeholder="" value="" required>
+        </div>
+
+        <h5 class="m-0 font-weight-bold text-primary">
+
+        </h5>
+
+        <div class="col-md-6 mb-3">
+          <label for="responsableNombre">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Responsable Nombre</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="responsableNombre" name="responsableNombre" placeholder=""
+            value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="responsablecontacto">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Responsable contacto</font>
+            </font>
+          </label>
+          <input type="is_numeric" class="form-control" id="responsablecontacto" name="responsablecontacto"
+            placeholder="" value="" required>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+          <label for="alergias">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Alergia</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="alergias" name="alergias" placeholder="" value="" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="medicamentos">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Medicamentos</font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="medicamentos" name="medicamentos" placeholder="" value=""
+            required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="fechaRegistro">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">fecha Registro </font>
+            </font>
+          </label>
+          <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" placeholder="" value=""
+            required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="id_medico">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Medico </font>
+            </font>
+          </label>
+          <input type="text" class="form-control" id="id_medico" name="id_medico" placeholder="" value="" required>
+        </div>
+
+        <h5 class="m-0 font-weight-bold text-primary">
+
+          <div class="col-md-6 mb-3">
+            <button type="submit" name="guardar" class="btn btn-primary">Guardar datos</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

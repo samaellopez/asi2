@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Nuevo Usuario - Clinica Medica</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="vendor/fontawesome-free/css/all.css" />
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+
+<body>
+  <div id="bg"></div>
+  <header>
+    <a href="#">Clínica Médica "Lorem ipsum"</a>
+  </header>
+  <main>
+    <section id="primary">
+      <h1>Creación de Usuario</h1>
+      <p>
+        Sección para creación y asignación de roles de usuario. Solo usuario ADMIN debe de tener acceso.
+      </p>
+    </section>
+    <section id="card">
+      <!-- <form action="login.php" method="POST"> -->
+      <form>
+        <div class="alert alert-info" role="alert">
+          <!-- Feedback al usuario desde el servidor -->
+        </div>
+        <label class="control-label" for="email">
+          Nuevo Usuario
+        </label>
+        <div class="input-group">
+          <input class="form-control" id="user" name="user" type="text" />
+        </div>
+        <label class="control-label" for="password">
+          Nueva Contraseña
+        </label>
+        <div class="input-group">
+          <input class="form-control" id="password" name="password" type="password" />
+        </div>
+
+        <label class="control-label" for="role">
+          Rol de Usuario
+        </label>
+        <select class="form-control" id="role" name="role">
+          <option value="1">Doctor</option>
+          <option value="2">Secretaria</option>
+        </select>
+
+        <input type="submit" name="create" id="create" value="Crear Usuario" class="main-button">
+      </form>
+    </section>
+  </main>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/popper/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+    // Creamos evento sobre boton 'Iniciar Sesion'
+    $(document).ready(function () {
+      $('.alert').hide();
+      $('#create').click(function () {
+        event.preventDefault();
+
+        // Obtenemos los valores de los textbox
+        let user = $('#user').val();
+        let role = $('#role').val();
+        let password = $('#password').val();
+
+        // Enviamos con ajax
+        $.ajax({
+          method: 'post',
+          url: 'controllers/create-user.php',
+          data: {
+            user: user,
+            password: password,
+            role: role
+          },
+          success: function (data) {
+            console.log(data);
+            $('.alert').html(data.msg).show();
+            if (data.status) 
+              setTimeout(function () {
+                location.href = 'index.html'
+              }, 2000);
+          }
+        })
+      });
+    })
+  </script>
+</body>
+
+</html>

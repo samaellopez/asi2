@@ -1,29 +1,25 @@
 <?php
-ob_start();
-include 'db-mysqli.php';
-include 'loginForm.php';
+require_once('db/connection.php');
 
-if (isset($_REQUEST['login'])){
-$user= $_POST['user'];
-$pass=$_POST['pass'];
+$user = (isset($_REQUEST['user']) ? $_REQUEST['user'] : '');
+$password = (isset($_REQUEST['password']) ? $_REQUEST['password'] : '');
 
-echo('isset login');
-$consulta="SELECT * FROM  usuario WHERE user='$user' and pass= $pass";
+$user = mysqli_real_escape_string($con, $user);
 
-$sentencia = $db->query($consulta);
+$query = mysqli_query($con, "SELECT * FROM login WHERE username = '$user' AND estado = 1");
 
-$row=mysqli_fetch_array($sentencia) or die (mysqli_error($db));
-if ($row['user']){
+// Evaluamos el resultado de la base de datos
+if ($query->num_rows == 0) echo 'Usuario no existe';
+else {
+  $row = $query->fetch_assoc();
+  // Comparamos contraseña
+  if (password_verify($password, $row['password'])) {
+    session_start();
+    // Establecemos los parametros de sesion
+    $_SESSION['logged'] = 'true';
+    $_SESSION['rol'] = $row['rol'];
+    $_SESSION['id_usuario'] = $row['id_usuario'];
 
-header("location: menu.html", true, 301);
-echo("hola");
-}else {
-    header("location: loginForm.php", true, 301);
-    echo("adios");
-    exit();
+    echo 'Autorizado';
+  } else echo 'Usuario o contraseña incorrectos.';
 }
-}
-
-
-
-?>
